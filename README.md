@@ -1,13 +1,21 @@
-# AWS Image Resizer
+# AWS Image Resizer Project
 
-This project resizes images using AWS S3 and Lambda.
+## 📌 Description
+This project automatically resizes images using AWS S3 and Lambda.
 
-## Tools Used
+## ⚙️ Technologies Used
 - AWS S3
 - AWS Lambda
 - Python
 
-## Working
-- Upload image
-- Lambda triggers
-- Image resized automatically
+## 🚀 How It Works
+- Upload image to S3 bucket
+- Lambda function triggers
+- Image gets resized and stored
+
+## 📷 Output
+(Add screenshots here)
+
+## 📚 Learning
+- Learned serverless architecture
+- Understood cloud automation
