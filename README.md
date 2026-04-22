@@ -13,9 +13,6 @@ This project automatically resizes images using AWS S3 and Lambda.
 - Lambda function triggers
 - Image gets resized and stored
 
-## 📷 Output
-(Add screenshots here)
-
 ## 📚 Learning
 - Learned serverless architecture
 - Understood cloud automation
