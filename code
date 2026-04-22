@@ -1,0 +1,39 @@
+import json
+import boto3
+from PIL import Image
+import io
+
+s3 = boto3.client('s3')
+
+def lambda_handler(event, context):
+
+    bucket = event['Records'][0]['s3']['bucket']['name']
+    key = event['Records'][0]['s3']['object']['key']
+
+    if "uploads/" not in key:
+        return
+
+    filename = key.split('/')[-1]
+
+    response = s3.get_object(Bucket=bucket, Key=key)
+    image_content = response['Body'].read()
+
+    img = Image.open(io.BytesIO(image_content))
+    img = img.resize((300,300))
+
+    buffer = io.BytesIO()
+    img.save(buffer, "JPEG")
+
+    resized_key = "resized/" + filename
+
+    s3.put_object(
+        Bucket=bucket,
+        Key=resized_key,
+        Body=buffer.getvalue(),
+        ContentType='image/jpeg'
+    )
+
+    return {
+        'statusCode': 200,
+        'body': 'Image resized successfully'
+    }
